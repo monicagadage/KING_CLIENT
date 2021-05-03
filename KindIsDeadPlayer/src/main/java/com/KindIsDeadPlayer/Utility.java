@@ -11,8 +11,9 @@ import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
-
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Utility {
 
@@ -74,17 +75,21 @@ public class Utility {
 		}
 	}
 
-	public static Boolean parseMessage(String line) throws InterruptedException {
+	public static Boolean parseMessage(String message) throws InterruptedException {
 		
-		if(line.equals("END")) {
-			return true;
-		}
-		else{
-			System.out.println("Message from Server --> " + line);
-			// TODO Auto-generated method stub
-			writeFile( Utility.getInstance().getFileWritePath(), "GoodBye from P1");
-			return false;
-		}
+		String[] messageArray = message.split(":");
+		String[] messageDetails = messageArray[1].split(",");
+		String messageNumber = messageArray[0];
+		List<String> messageDetailsList = new ArrayList<>(Arrays.asList(messageDetails));
+
+		if ("02".equals(messageNumber))
+			PlayerProcessing.populateMapRandomly(messageNumber, messageDetailsList);
+		else if("03".equals(messageNumber))
+			PlayerProcessing.distributeRandomFollowers(messageNumber, messageDetailsList);
+		else if("04".equals(messageNumber))
+			PlayerProcessing.randomlyNameRegion(messageNumber, messageDetailsList);
+		
+		return true;
 		
 	}
 	
