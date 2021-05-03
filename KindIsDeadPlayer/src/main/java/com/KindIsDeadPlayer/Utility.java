@@ -2,12 +2,17 @@ package com.KindIsDeadPlayer;
 
 import static java.nio.file.StandardOpenOption.WRITE;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.LineNumberReader;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -57,24 +62,38 @@ public class Utility {
 		canBreak = false;
 		String line;
 		try {
-			LineNumberReader lnr =new LineNumberReader(new FileReader(filename));
+
+			FileInputStream fInP1 = new FileInputStream(filename);
+			BufferedReader bReadP1 = new BufferedReader(new InputStreamReader(fInP1));
 			while (!canBreak) {
-				line = lnr.readLine();
+				line = bReadP1.readLine();
 				if (line == null || line.isEmpty()) {				
 					Thread.sleep(3000);
 					continue;
 				}
 				canBreak = parseMessage(line);
+				clearTheFile(filename);
+				fInP1.getChannel().position(0);
+				bReadP1 = new BufferedReader(new InputStreamReader(fInP1));
 				if (canBreak)
 					break;
 			}
-			lnr.close();
+			bReadP1.close();
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 	}
 
+	public static void clearTheFile(String fileName) throws IOException {
+		
+        FileWriter fwOb = new FileWriter(fileName, false); 
+        PrintWriter pwOb = new PrintWriter(fwOb, false);
+        pwOb.flush();
+        pwOb.close();
+        fwOb.close();
+    }
+	
 	public static Boolean parseMessage(String message) throws InterruptedException {
 		
 		String[] messageArray = message.split(":");
@@ -118,3 +137,4 @@ public class Utility {
 	}
 	
 }
+
