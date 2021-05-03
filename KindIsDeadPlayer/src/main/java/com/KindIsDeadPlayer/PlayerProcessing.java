@@ -27,11 +27,11 @@ public class PlayerProcessing {
 		System.out.println(messageDetailsList.get(16) + "		" + messageDetailsList.get(17) + "	"
 				+ messageDetailsList.get(18) + "		" + messageDetailsList.get(19) + "");
 		System.out.println(messageDetailsList.get(20) + "		" + messageDetailsList.get(21) + "	"
-				+ messageDetailsList.get(23) + "		" + messageDetailsList.get(24) + "");
-		System.out.println(messageDetailsList.get(25) + "		" + messageDetailsList.get(26) + "	"
-				+ messageDetailsList.get(27) + "		" + messageDetailsList.get(28) + "");
-		System.out.println(messageDetailsList.get(29) + "		" + messageDetailsList.get(30) + "	"
-				+ messageDetailsList.get(31) + "		" + messageDetailsList.get(32) + "");
+				+ messageDetailsList.get(22) + "		" + messageDetailsList.get(23) + "");
+		System.out.println(messageDetailsList.get(24) + "		" + messageDetailsList.get(25) + "	"
+				+ messageDetailsList.get(26) + "		" + messageDetailsList.get(27) + "");
+		System.out.println(messageDetailsList.get(28) + "		" + messageDetailsList.get(29) + "	"
+				+ messageDetailsList.get(30) + "		" + messageDetailsList.get(31) + "");
 	}
 
 	/**
@@ -46,6 +46,10 @@ public class PlayerProcessing {
 	public static void distributeRandomFollowers(String messageNumber, List<String> messageDetailsList) {
 		System.out.println("Player " + messageDetailsList.get(0) + " has " + messageDetailsList.get(1) + " Blue "
 				+ messageDetailsList.get(2) + " Red " + messageDetailsList.get(3) + "Yellow Followers ");
+		System.out.println("Player " + messageDetailsList.get(4) + " has " + messageDetailsList.get(5) + " Blue "
+				+ messageDetailsList.get(6) + " Red " + messageDetailsList.get(7) + "Yellow Followers ");
+		System.out.println("Player " + messageDetailsList.get(8) + " has " + messageDetailsList.get(9) + " Blue "
+				+ messageDetailsList.get(10) + " Red " + messageDetailsList.get(11) + "Yellow Followers ");
 
 	}
 
