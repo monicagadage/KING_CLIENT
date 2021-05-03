@@ -89,7 +89,7 @@ public class Utility {
 		else if("04".equals(messageNumber))
 			PlayerProcessing.randomlyNameRegion(messageNumber, messageDetailsList);
 		
-		return true;
+		return false;
 		
 	}
 	
