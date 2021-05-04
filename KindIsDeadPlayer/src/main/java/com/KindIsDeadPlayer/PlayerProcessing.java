@@ -1,6 +1,7 @@
 package com.KindIsDeadPlayer;
 
 import java.util.List;
+//import Utility;
 
 public class PlayerProcessing {
 
@@ -74,5 +75,94 @@ public class PlayerProcessing {
 		System.out.println(messageDetailsList.get(7) + "  	" + 8);
 
 	}
-
+	
+	public static void supporterCard() throws InterruptedException {
+		System.out.println("Choose Scotish(S) Welish(W) English(E) Support Card");
+		String choice=System.console().readLine();
+		System.out.println("Enter Region to support    "
+				+ "Moray : MO\r\n"
+				+ "Strathclyde : ST\r\n"
+				+ "Lancaster: LA\r\n"
+				+ "Northumbria: NO\r\n"
+				+ "Warwick: WA\r\n"
+				+ "Gwynedd: GW\r\n"
+				+ "Essex: ES\r\n"
+				+ "Devon: DE\r\n"
+				+ "France: FR\r\n"
+				+ "");
+		String region=System.console().readLine();
+		String message="07:"+Utility.getInstance().GetPlayerName()+","+choice+","+region;
+		Utility.writeFile(Utility.getInstance().getFileWritePath(), message);
+	}
+	
+	public static void assembleCard() throws InterruptedException{
+		System.out.println("Enter First Region to support    "
+				+ "Moray : MO\r\n"
+				+ "Strathclyde : ST\r\n"
+				+ "Lancaster: LA\r\n"
+				+ "Northumbria: NO\r\n"
+				+ "Warwick: WA\r\n"
+				+ "Gwynedd: GW\r\n"
+				+ "Essex: ES\r\n"
+				+ "Devon: DE\r\n"
+				+ "France: FR\r\n"
+				+ "");
+		String region1=System.console().readLine();
+		System.out.println("Enter the follower first color to add: [R/B/Y]");
+		String color1=System.console().readLine();
+		System.out.println("Enter Second Region to support    "
+				+ "Moray : MO\r\n"
+				+ "Strathclyde : ST\r\n"
+				+ "Lancaster: LA\r\n"
+				+ "Northumbria: NO\r\n"
+				+ "Warwick: WA\r\n"
+				+ "Gwynedd: GW\r\n"
+				+ "Essex: ES\r\n"
+				+ "Devon: DE\r\n"
+				+ "France: FR\r\n"
+				+ "");
+		String region2=System.console().readLine();
+		System.out.println("Enter the follower second color to add: [R/B/Y]");
+		String color2=System.console().readLine();
+		System.out.println("Enter Third Region to support    "
+				+ "Moray : MO\r\n"
+				+ "Strathclyde : ST\r\n"
+				+ "Lancaster: LA\r\n"
+				+ "Northumbria: NO\r\n"
+				+ "Warwick: WA\r\n"
+				+ "Gwynedd: GW\r\n"
+				+ "Essex: ES\r\n"
+				+ "Devon: DE\r\n"
+				+ "France: FR\r\n"
+				+ "");
+		String region3=System.console().readLine();
+		System.out.println("Enter the follower third color to add [R/B/Y]: ");
+		String color3=System.console().readLine();
+		String message = "08:"+region1+","+color1+","+region2+","+color2+","+region3+","+color3;
+		Utility.writeFile(Utility.getInstance().getFileWritePath(), message);
+	}
+	
+	public static void manoeuvre() throws InterruptedException{
+		System.out.println("Enter the Region1 seperated by space with color 1 to swap");
+		String part1=System.console().readLine();
+		String[] data1=part1.split(" ");
+		System.out.println("Enter the Region2 seperated by space with color 2 to swap");
+		String part2=System.console().readLine();
+		String[] data2=part2.split(" ");
+		String message = "09:"+data1[0]+","+data1[1]+","+data2[0]+","+data2[1];
+		Utility.writeFile(Utility.getInstance().getFileWritePath(), message);
+	}
+	
+//	public static void outManoeuvre() throws InterruptedException{
+//		
+//	}
+	
+	public static void negotiate() throws InterruptedException{
+		System.out.println("Negotiate: Enter country to swap from");
+		String country1 = System.console().readLine();
+		System.out.println("Enter country to swap with");
+		String country2 = System.console().readLine();
+		String message = "11:"+country1+","+country2;
+		Utility.writeFile(Utility.getInstance().getFileWritePath(), message);
+	}
 }

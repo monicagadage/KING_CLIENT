@@ -99,7 +99,7 @@ public class Utility {
 		String[] messageArray = message.split(":");
 		String[] messageDetails = messageArray[1].split(",");
 		String messageNumber = messageArray[0];
-		List<String> messageDetailsList = new ArrayList<>(Arrays.asList(messageDetails));
+		List<String> messageDetailsList = new ArrayList<String>(Arrays.asList(messageDetails));
 
 		if ("02".equals(messageNumber))
 			PlayerProcessing.populateMapRandomly(messageNumber, messageDetailsList);
