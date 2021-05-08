@@ -89,6 +89,8 @@ public class Utility {
 			PlayerProcessing.distributeRandomFollowers(messageNumber, messageDetailsList);
 		else if ("04".equals(messageNumber))
 			PlayerProcessing.randomlyNameRegion(messageNumber, messageDetailsList);
+		else if ("06".equals(messageNumber))
+			PlayerProcessing.playerTurn(messageNumber, messageDetailsList);
 		else
 			return true;
 
