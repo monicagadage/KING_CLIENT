@@ -193,4 +193,10 @@ public class PlayerProcessing {
 		Utility.writeFile(Utility.getInstance().getFileWritePath(), message);
 	}
 
+	public static void winnerplayer(String messageNumber, List<String> messageDetailsList) {
+		System.out.println(" Player "+ messageDetailsList.get(0) + " is Winner !! ");
+		System.out.println("Winner type is "+messageDetailsList.get(1));
+		
+	}
+
 }
