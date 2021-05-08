@@ -7,7 +7,7 @@ public class Main {
 	public static void main(String[] args) throws InterruptedException, IOException {
 
 		String playerName = args[0];
-		System.out.println("This is a Player " + playerName );
+		System.out.println("This is a Player !!");
 		
 		String FilepathRead = "/tmp/To" + playerName;
 		String Writepath = "/tmp/From" + playerName;
