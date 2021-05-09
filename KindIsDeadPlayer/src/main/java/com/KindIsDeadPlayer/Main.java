@@ -15,7 +15,7 @@ public class Main {
 		Utility.getInstance().SetPlayerName(playerName);
 		Utility.getInstance().setFileWritePath(Writepath);
 		Utility.getInstance().setReadfilepath(FilepathRead);
-		Utility.readFile(FilepathRead, false);	
+		Utility.readFile(FilepathRead, false);			
 	}
 
 }
