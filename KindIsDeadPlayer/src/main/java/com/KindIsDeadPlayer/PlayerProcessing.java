@@ -2,6 +2,8 @@ package com.KindIsDeadPlayer;
 
 import java.util.List;
 
+import javax.swing.plaf.synth.SynthSpinnerUI;
+
 public class PlayerProcessing {
 
 	/**
@@ -196,6 +198,42 @@ public class PlayerProcessing {
 	public static void winnerplayer(String messageNumber, List<String> messageDetailsList) {
 		System.out.println(" Player "+ messageDetailsList.get(0) + " is Winner !! ");
 		System.out.println("Winner type is "+messageDetailsList.get(1));
+		
+	}
+
+	public static void allInfo(String messageNumber, List<String> messageDetailsList) {
+		// TODO Auto-generated method stub
+		System.out.println("It was" + messageDetailsList.get(0) + "Turn");
+		if(messageDetailsList.get(1).equals("A")) {
+			System.out.println("Assemble Card was played");
+			System.out.println(messageDetailsList.get(3) + "was added to " + messageDetailsList.get(2));
+			System.out.println(messageDetailsList.get(5) + "was added to " + messageDetailsList.get(4));
+			System.out.println(messageDetailsList.get(7) + "was added to " + messageDetailsList.get(6));
+			
+			System.out.println(messageDetailsList.get(9) + "was drawn from " + messageDetailsList.get(8));
+			
+		}
+		if(messageDetailsList.get(1).equals("S")) {
+			System.out.println("Supporter Card was played");
+			System.out.println("Two supporter were added to" + messageDetailsList.get(2) + "Region of Country " + messageDetailsList.get(3));
+		}
+		if(messageDetailsList.get(1).equals("M")) {
+			System.out.println("Manoeuvre Card was played");
+			System.out.println(messageDetailsList.get(3) + "was added to " + messageDetailsList.get(2));
+			System.out.println(messageDetailsList.get(5) + "was added to " + messageDetailsList.get(4));
+		}
+		if(messageDetailsList.get(1).equals("0")) {
+			System.out.println("OutManoeuvre Card was played");
+			System.out.println(messageDetailsList.get(3) + " and "+ messageDetailsList.get(4) + "was added to " + messageDetailsList.get(2));
+			System.out.println(messageDetailsList.get(6) + "was added to " + messageDetailsList.get(5));
+			
+		}
+		if(messageDetailsList.get(1).equals("N")) {
+			System.out.println("Negotiate Card was played");
+			System.out.println("Country" + messageDetailsList.get(3) + "is now swapped with " + messageDetailsList.get(4));
+		
+		}
+		
 		
 	}
 
