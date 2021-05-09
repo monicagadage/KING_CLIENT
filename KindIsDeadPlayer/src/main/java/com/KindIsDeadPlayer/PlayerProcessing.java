@@ -185,9 +185,9 @@ public class PlayerProcessing {
 	}
 	
 	private static void drawTheSupportor(){
-		System.out.println("Please Enter the follower : (B/Y/R)");
-		String part1 = System.console().readLine(); 
 		System.out.println("Please Enter the country name :");
+		String part1 = System.console().readLine(); 
+		System.out.println("Please Enter the follower : (B/Y/R)");
 		String part2 = System.console().readLine(); 
 		String message = "12:" + part1 + "," + part2;
 		Utility.writeFile(Utility.getInstance().getFileWritePath(), message);
