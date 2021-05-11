@@ -93,14 +93,14 @@ public class Utility {
 			PlayerProcessing.playerTurn(messageNumber, messageDetailsList);
 		else if ("13".equals(messageNumber))
 			PlayerProcessing.allInfo(messageNumber, messageDetailsList);
-		else if ("16".equals(messageNumber))
+		else if("14".equals(messageNumber))
+			PlayerProcessing.powerStruggle(messageNumber, messageDetailsList);
+		else if ("16".equals(messageNumber)) {
 			PlayerProcessing.winnerplayer(messageNumber, messageDetailsList);
-			return true
-	//	else if ("15".equals(messageNumber))
-	//		PlayerProcessing.winnerplayer(messageNumber, messageDetailsList);
-		else
 			return true;
+		}
 
+		
 		return false;
 
 	}

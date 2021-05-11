@@ -1,9 +1,9 @@
 package com.KindIsDeadPlayer;
 
 import java.util.List;
+
 //import Utility;
 
-import javax.swing.plaf.synth.SynthSpinnerUI;
 
 public class PlayerProcessing {
 
@@ -166,13 +166,13 @@ public class PlayerProcessing {
 		System.out.println("Enter the Region2 seperated by space with color 1 to swap");
 		String part2 = System.console().readLine();
 		String[] data2 = part2.split(" ");
-		String message = "10:" + data1[0] + "," + data1[1] + "," + data2[0] + "," + data2[1];
+		String message = "10:" + data1[0] + "," + data1[1] + "," + data1[2]+"," + data2[0] + "," + data2[1];
 		Utility.writeFile(Utility.getInstance().getFileWritePath(), message);
 		drawTheSupportor();
 	}
 	
 	private static void negotiate() {
-		System.out.println("Negotiate: Enter country to swap from");
+		System.out.println(" Negotiate: Enter country to swap from ");
 		String country1 = System.console().readLine();
 		System.out.println("Enter country to swap with");
 		String country2 = System.console().readLine();
@@ -207,124 +207,44 @@ public class PlayerProcessing {
 		System.out.println("It was" + messageDetailsList.get(0) + "Turn");
 		if(messageDetailsList.get(1).equals("A")) {
 			System.out.println("Assemble Card was played");
-			System.out.println(messageDetailsList.get(3) + "was added to " + messageDetailsList.get(2));
-			System.out.println(messageDetailsList.get(5) + "was added to " + messageDetailsList.get(4));
-			System.out.println(messageDetailsList.get(7) + "was added to " + messageDetailsList.get(6));
+			System.out.println(messageDetailsList.get(3) + " was added to " + messageDetailsList.get(2));
+			System.out.println(messageDetailsList.get(5) + " was added to " + messageDetailsList.get(4));
+			System.out.println(messageDetailsList.get(7) + " was added to " + messageDetailsList.get(6));
 			
-			System.out.println(messageDetailsList.get(9) + "was drawn from " + messageDetailsList.get(8));
+			System.out.println(messageDetailsList.get(9) + " was drawn from " + messageDetailsList.get(8));
 			
 		}
 		if(messageDetailsList.get(1).equals("S")) {
 			System.out.println("Supporter Card was played");
-			System.out.println("Two supporter were added to" + messageDetailsList.get(2) + "Region of Country " + messageDetailsList.get(3));
+			System.out.println("Two supporter were added to " + messageDetailsList.get(2) + " Region of Country " + messageDetailsList.get(3));
 		}
 		if(messageDetailsList.get(1).equals("M")) {
 			System.out.println("Manoeuvre Card was played");
-			System.out.println(messageDetailsList.get(3) + "was added to " + messageDetailsList.get(2));
-			System.out.println(messageDetailsList.get(5) + "was added to " + messageDetailsList.get(4));
+			System.out.println(messageDetailsList.get(3) + " was added to " + messageDetailsList.get(2));
+			System.out.println(messageDetailsList.get(5) + " was added to " + messageDetailsList.get(4));
 		}
 		if(messageDetailsList.get(1).equals("0")) {
 			System.out.println("OutManoeuvre Card was played");
-			System.out.println(messageDetailsList.get(3) + " and "+ messageDetailsList.get(4) + "was added to " + messageDetailsList.get(2));
-			System.out.println(messageDetailsList.get(6) + "was added to " + messageDetailsList.get(5));
+			System.out.println(messageDetailsList.get(3) + " and "+ messageDetailsList.get(4) + " was added to " + messageDetailsList.get(2));
+			System.out.println(messageDetailsList.get(6) + " was added to " + messageDetailsList.get(5));
 			
 		}
 		if(messageDetailsList.get(1).equals("N")) {
 			System.out.println("Negotiate Card was played");
-			System.out.println("Country" + messageDetailsList.get(3) + "is now swapped with " + messageDetailsList.get(4));
+			System.out.println("Country " + messageDetailsList.get(3) + " is now swapped with " + messageDetailsList.get(4));
 		
 		}
 		
 		
 	}
-	
-	public static void supporterCard() throws InterruptedException {
-		System.out.println("Choose Scotish(S) Welish(W) English(E) Support Card");
-		String choice=System.console().readLine();
-		System.out.println("Enter Region to support    "
-				+ "Moray : MO\r\n"
-				+ "Strathclyde : ST\r\n"
-				+ "Lancaster: LA\r\n"
-				+ "Northumbria: NO\r\n"
-				+ "Warwick: WA\r\n"
-				+ "Gwynedd: GW\r\n"
-				+ "Essex: ES\r\n"
-				+ "Devon: DE\r\n"
-				+ "France: FR\r\n"
-				+ "");
-		String region=System.console().readLine();
-		String message="07:"+Utility.getInstance().GetPlayerName()+","+choice+","+region;
-		Utility.writeFile(Utility.getInstance().getFileWritePath(), message);
+
+	public static void powerStruggle(String messageNumber, List<String> messageDetailsList) {
+		// TODO Auto-generated method stub
+		
+		System.out.println("Power Struggle was Processed");
+		System.out.println("Result of Power Struggle : ");
+		System.out.println(messageDetailsList.get(0) + " has been taken over by " + messageDetailsList.get(1));
+		
 	}
 	
-	public static void assembleCard() throws InterruptedException{
-		System.out.println("Enter First Region to support    "
-				+ "Moray : MO\r\n"
-				+ "Strathclyde : ST\r\n"
-				+ "Lancaster: LA\r\n"
-				+ "Northumbria: NO\r\n"
-				+ "Warwick: WA\r\n"
-				+ "Gwynedd: GW\r\n"
-				+ "Essex: ES\r\n"
-				+ "Devon: DE\r\n"
-				+ "France: FR\r\n"
-				+ "");
-		String region1=System.console().readLine();
-		System.out.println("Enter the follower first color to add: [R/B/Y]");
-		String color1=System.console().readLine();
-		System.out.println("Enter Second Region to support    "
-				+ "Moray : MO\r\n"
-				+ "Strathclyde : ST\r\n"
-				+ "Lancaster: LA\r\n"
-				+ "Northumbria: NO\r\n"
-				+ "Warwick: WA\r\n"
-				+ "Gwynedd: GW\r\n"
-				+ "Essex: ES\r\n"
-				+ "Devon: DE\r\n"
-				+ "France: FR\r\n"
-				+ "");
-		String region2=System.console().readLine();
-		System.out.println("Enter the follower second color to add: [R/B/Y]");
-		String color2=System.console().readLine();
-		System.out.println("Enter Third Region to support    "
-				+ "Moray : MO\r\n"
-				+ "Strathclyde : ST\r\n"
-				+ "Lancaster: LA\r\n"
-				+ "Northumbria: NO\r\n"
-				+ "Warwick: WA\r\n"
-				+ "Gwynedd: GW\r\n"
-				+ "Essex: ES\r\n"
-				+ "Devon: DE\r\n"
-				+ "France: FR\r\n"
-				+ "");
-		String region3=System.console().readLine();
-		System.out.println("Enter the follower third color to add [R/B/Y]: ");
-		String color3=System.console().readLine();
-		String message = "08:"+region1+","+color1+","+region2+","+color2+","+region3+","+color3;
-		Utility.writeFile(Utility.getInstance().getFileWritePath(), message);
-	}
-	
-	public static void manoeuvre() throws InterruptedException{
-		System.out.println("Enter the Region1 seperated by space with color 1 to swap");
-		String part1=System.console().readLine();
-		String[] data1=part1.split(" ");
-		System.out.println("Enter the Region2 seperated by space with color 2 to swap");
-		String part2=System.console().readLine();
-		String[] data2=part2.split(" ");
-		String message = "09:"+data1[0]+","+data1[1]+","+data2[0]+","+data2[1];
-		Utility.writeFile(Utility.getInstance().getFileWritePath(), message);
-	}
-	
-//	public static void outManoeuvre() throws InterruptedException{
-//		
-//	}
-	
-	public static void negotiate() throws InterruptedException{
-		System.out.println("Negotiate: Enter country to swap from");
-		String country1 = System.console().readLine();
-		System.out.println("Enter country to swap with");
-		String country2 = System.console().readLine();
-		String message = "11:"+country1+","+country2;
-		Utility.writeFile(Utility.getInstance().getFileWritePath(), message);
-	}
 }
