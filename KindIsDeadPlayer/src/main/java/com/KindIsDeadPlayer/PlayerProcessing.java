@@ -123,7 +123,7 @@ public class PlayerProcessing {
 				                                             + "Devon       :---------------- DE\r\n" 
 															 + "France      :---------------- FR\r" + "");
 		String region = System.console().readLine();
-		String message = "07:" + Utility.getInstance().GetPlayerName() + "," + choice + "," + region;
+		String message = "07:" + choice + "," + region;
 		Utility.writeFile(Utility.getInstance().getFileWritePath(), message);
 		drawTheSupportor();
 	}
