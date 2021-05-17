@@ -1,6 +1,9 @@
 package com.KindIsDeadPlayer;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+
 
 //import Utility;
 
@@ -18,24 +21,69 @@ public class PlayerProcessing {
 	 * @param messageDetailsList
 	 */
 	public static void populateMapRandomly(String messageNumber, List<String> messageDetailsList) {
+		
+		HashMap<String, HashMap<String, Integer>> locationFollower = new HashMap<>();
+		
 		System.out.println("\nCountry		Blue	Red		Yellow");
 		System.out.println(messageDetailsList.get(0) + "		" + messageDetailsList.get(1) + "	"
 				+ messageDetailsList.get(2) + "		" + messageDetailsList.get(3) + "");
+		
+		locationFollower.put(messageDetailsList.get(0), 
+				addFollower(messageDetailsList.get(1), messageDetailsList.get(2), messageDetailsList.get(3)));
+		
 		System.out.println(messageDetailsList.get(4) + "		" + messageDetailsList.get(5) + "	"
 				+ messageDetailsList.get(6) + "		" + messageDetailsList.get(7) + "");
+		
+		locationFollower.put(messageDetailsList.get(4), 
+				addFollower(messageDetailsList.get(5), messageDetailsList.get(6), messageDetailsList.get(7)));
+		
 		System.out.println(messageDetailsList.get(8) + "		" + messageDetailsList.get(9) + "	"
 				+ messageDetailsList.get(10) + "		" + messageDetailsList.get(11) + "");
+		
+		locationFollower.put(messageDetailsList.get(8), 
+				addFollower(messageDetailsList.get(9), messageDetailsList.get(10), messageDetailsList.get(11)));
+		
 		System.out.println(messageDetailsList.get(12) + "		" + messageDetailsList.get(13) + "	"
 				+ messageDetailsList.get(14) + "		" + messageDetailsList.get(15) + "");
+		locationFollower.put(messageDetailsList.get(12), 
+				addFollower(messageDetailsList.get(13), messageDetailsList.get(14), messageDetailsList.get(15)));
+		
 		System.out.println(messageDetailsList.get(16) + "		" + messageDetailsList.get(17) + "	"
 				+ messageDetailsList.get(18) + "		" + messageDetailsList.get(19) + "");
+		locationFollower.put(messageDetailsList.get(16), 
+				addFollower(messageDetailsList.get(17), messageDetailsList.get(18), messageDetailsList.get(19)));
+		
 		System.out.println(messageDetailsList.get(20) + "		" + messageDetailsList.get(21) + "	"
 				+ messageDetailsList.get(22) + "		" + messageDetailsList.get(23) + "");
+		locationFollower.put(messageDetailsList.get(20), 
+				addFollower(messageDetailsList.get(21), messageDetailsList.get(22), messageDetailsList.get(23)));
+		
 		System.out.println(messageDetailsList.get(24) + "		" + messageDetailsList.get(25) + "	"
 				+ messageDetailsList.get(26) + "		" + messageDetailsList.get(27) + "");
+		
+		locationFollower.put(messageDetailsList.get(24), 
+				addFollower(messageDetailsList.get(25), messageDetailsList.get(26), messageDetailsList.get(27)));
+		
 		System.out.println(messageDetailsList.get(28) + "		" + messageDetailsList.get(29) + "	"
 				+ messageDetailsList.get(30) + "		" + messageDetailsList.get(31) + "");
+		
+		locationFollower.put(messageDetailsList.get(28), 
+				addFollower(messageDetailsList.get(29), messageDetailsList.get(30), messageDetailsList.get(31)));
 		System.out.println("\n");
+		
+		
+		
+		GameParameter.getInstance().setLocationFollower(locationFollower );
+	}
+
+	private static HashMap<String, Integer> addFollower(String blueFoll, String redFoll, String yelloFoll) {
+		// TODO Auto-generated method stub\
+		HashMap<String, Integer> follower = new HashMap<>();
+		follower.put("B", Integer.valueOf(blueFoll));
+		follower.put("R", Integer.valueOf(redFoll));
+		follower.put("Y", Integer.valueOf(yelloFoll));
+		return follower;
+		
 	}
 
 	/**
@@ -48,6 +96,8 @@ public class PlayerProcessing {
 	 * @param messageDetailsList
 	 */
 	public static void distributeRandomFollowers(String messageNumber, List<String> messageDetailsList) {
+		
+		
 		System.out.println("Player " + messageDetailsList.get(0) + " has " + messageDetailsList.get(1) + " Blue "
 				+ messageDetailsList.get(2) + " Red " + messageDetailsList.get(3) + " Yellow Followers ");
 		
@@ -64,16 +114,37 @@ public class PlayerProcessing {
 	 * @param messageDetailsList
 	 */
 	public static void randomlyNameRegion(String messageNumber, List<String> messageDetailsList) {
+		
+		ArrayList<String> Initializeloca = new ArrayList<String>();
+		
 		System.out.println("\n");
 		System.out.println("Country  	Number");
 		System.out.println(messageDetailsList.get(0) + "  		" + 1);
+		Initializeloca.add(messageDetailsList.get(0));
+		
 		System.out.println(messageDetailsList.get(1) + "  		" + 2);
+		Initializeloca.add(messageDetailsList.get(1));
+		
 		System.out.println(messageDetailsList.get(2) + "  		" + 3);
+		Initializeloca.add(messageDetailsList.get(2));
+		
 		System.out.println(messageDetailsList.get(3) + "  		" + 4);
+		Initializeloca.add(messageDetailsList.get(3));
+		
 		System.out.println(messageDetailsList.get(4) + "  		" + 5);
+		Initializeloca.add(messageDetailsList.get(4));
+		
 		System.out.println(messageDetailsList.get(5) + " 	 	" + 6);
+		Initializeloca.add(messageDetailsList.get(5));
+		
 		System.out.println(messageDetailsList.get(6) + " 	 	" + 7);
+		Initializeloca.add(messageDetailsList.get(6));
+		
 		System.out.println(messageDetailsList.get(7) + " 	 	" + 8);
+		Initializeloca.add(messageDetailsList.get(7));
+		
+		
+		GameParameter.getInstance().setInitializeloca(Initializeloca);
 
 	}
 
@@ -112,111 +183,239 @@ public class PlayerProcessing {
 	
 	private static void supporterCard() {
 		System.out.println("Choose Scotish(S) Welish(W) English(E) Support Card");
+		StringBuilder message = new StringBuilder("07").append(":");
+
+		
 		String choice = System.console().readLine();
-		System.out.println("\nEnter Region to support:   \n\n" + "Moray       :---------------- MO\r\n" 
-															 + "Strathclyde :---------------- ST\r\n"
-				                                             + "Lancaster   :---------------- LA\r\n" 
-															 + "Northumbria :---------------- NO\r\n" 
-				                                             + "Warwick     :---------------- WA\r\n" 
-															 + "Gwynedd     :---------------- GW\r\n" 
-				                                             + "Essex       :---------------- ES\r\n"
-				                                             + "Devon       :---------------- DE\r\n" 
-															 + "France      :---------------- FR\r" + "");
+		
+		if(PlayerInfoValidation.getInstance().validateSupporter(choice))
+			message.append(choice).append(",");
+		else {
+			System.out.println("\n ====== Invalid Supporter! Create question again ====== \n");
+			supporterCard();
+			return;
+		}
+		
+		printRegion();
+		
+		
 		String region = System.console().readLine();
-		String message = "07:" + choice + "," + region;
-		Utility.writeFile(Utility.getInstance().getFileWritePath(), message);
+		while(!PlayerInfoValidation.getInstance().validateLocation(region)) {
+			System.out.println("\n ====== Invalid Region Selected! select again ====== \n");
+			printRegion();
+			region = System.console().readLine();
+			
+		}
+		message.append(region);
+		
+		Utility.writeFile(Utility.getInstance().getFileWritePath(), message.toString());
 		drawTheSupportor();
+	}
+
+	private static void printRegion() {
+		
+		// TODO Auto-generated method stub
+		System.out.println("\nEnter Region:   \n\n" 
+				 + "Moray       :---------------- MO\r" 
+				 + displayFoll("MO")
+				 + "Strathclyde :---------------- ST\r"
+				 + displayFoll("ST")
+				 + "Lancaster   :---------------- LA\r" 
+				 + displayFoll("LA")
+				 + "Northumbria :---------------- NO\r" 
+				 + displayFoll("NO")
+				 + "Warwick     :---------------- WA\r" 
+				 + displayFoll("WA")
+				 + "Gwynedd     :---------------- GW\r" 
+				 + displayFoll("GW")
+				 + "Essex       :---------------- ES\r"
+				 + displayFoll("ES")
+				 + "Devon       :---------------- DE\r" 
+				 + displayFoll("DE") );
+		
+		
+	}
+
+	private static String displayFoll(String region) {
+		// TODO Auto-generated method stub
+		
+		StringBuilder message =  new StringBuilder();
+		message.append(" Blue Follower - " +GameParameter.getInstance().getLocationFollower().get(region).get("B")
+				 +  " Red  Follower - " +GameParameter.getInstance().getLocationFollower().get(region).get("R")
+				 +  " Yellow Follower - " +GameParameter.getInstance().getLocationFollower().get(region).get("Y")
+				 + "\n" );
+		return message.toString();
+		
 	}
 
 	private static void assembleCard() {
+
+		StringBuilder message = new StringBuilder("08").append(":");
 		
-	//	System.out.println("Enter First Region to support    " + "Moray : MO\r\n" + "Strathclyde : ST\r\n"
-	//			+ "Lancaster: LA\r\n" + "Northumbria: NO\r\n" + "Warwick: WA\r\n" + "Gwynedd: GW\r\n" + "Essex: ES\r\n"
-	//			+ "Devon: DE\r\n" + "France: FR\r\n" + "");
+		System.out.println("Enter First Region");
 		
-		System.out.println("\nEnter First Region to support:    \n\n" + "Moray       :---------------- MO\r\n" 
-				 													+ "Strathclyde :---------------- ST\r\n"
-				 													+ "Lancaster   :---------------- LA\r\n" 
-				 													+ "Northumbria :---------------- NO\r\n" 
-				 													+ "Warwick     :---------------- WA\r\n" 
-				 													+ "Gwynedd     :---------------- GW\r\n" 
-				 													+ "Essex       :---------------- ES\r\n"
-				 													+ "Devon       :---------------- DE\r\n" 
-				 													+ "France      :---------------- FR\r" + "");
-		String region1 = System.console().readLine();
-		System.out.println("\nEnter the follower first color to add: [R/B/Y]");
-		String color1 = System.console().readLine();
+		printRegion();
 		
-	//	System.out.println("Enter Second Region to support    " + "Moray : MO\r\n" + "Strathclyde : ST\r\n"
-	//			+ "Lancaster: LA\r\n" + "Northumbria: NO\r\n" + "Warwick: WA\r\n" + "Gwynedd: GW\r\n" + "Essex: ES\r\n"
-	//			+ "Devon: DE\r\n" + "France: FR\r\n" + "");
-		System.out.println("\nEnter Second Region to support:   \n\n" + "Moray       :---------------- MO\r\n" 
-																	+ "Strathclyde :---------------- ST\r\n"
-																	+ "Lancaster   :---------------- LA\r\n" 
-																	+ "Northumbria :---------------- NO\r\n" 
-																	+ "Warwick     :---------------- WA\r\n" 
-																	+ "Gwynedd     :---------------- GW\r\n" 
-																	+ "Essex       :---------------- ES\r\n"
-																	+ "Devon       :---------------- DE\r\n" 
-																	+ "France      :---------------- FR\r" + "");
-			
-		String region2 = System.console().readLine();
-		System.out.println("\nEnter the follower second color to add: [R/B/Y]");
-		String color2 = System.console().readLine();
+		message.append(regionFollower());
 		
+		message.append(",");
 		
-	//	System.out.println("Enter Third Region to support    " + "Moray : MO\r\n" + "Strathclyde : ST\r\n"
-	//			+ "Lancaster: LA\r\n" + "Northumbria: NO\r\n" + "Warwick: WA\r\n" + "Gwynedd: GW\r\n" + "Essex: ES\r\n"
-	//			+ "Devon: DE\r\n" + "France: FR\r\n" + "");
-		System.out.println("\nEnter Third Region to support:   \n\n"  + "Moray       :---------------- MO\r\n" 
-																	+ "Strathclyde :---------------- ST\r\n"
-																	+ "Lancaster   :---------------- LA\r\n" 
-																	+ "Northumbria :---------------- NO\r\n" 
-																	+ "Warwick     :---------------- WA\r\n" 
-																	+ "Gwynedd     :---------------- GW\r\n" 
-																	+ "Essex       :---------------- ES\r\n"
-																	+ "Devon       :---------------- DE\r\n" 
-																	+ "France      :---------------- FR\r" + "");
+		System.out.println("Enter Second Region");
 		
-		String region3 = System.console().readLine();
-		System.out.println("\nEnter the follower third color to add [R/B/Y]: ");
-		String color3 = System.console().readLine();
-		String message = "08:" + region1 + "," + color1 + "," + region2 + "," + color2 + "," + region3 + "," + color3;
-		Utility.writeFile(Utility.getInstance().getFileWritePath(), message);
+		printRegion();
+		
+		message.append(regionFollower());
+		
+		message.append(",");
+		
+		System.out.println("Enter Third Region");
+		
+		printRegion();
+		
+		message.append(regionFollower());
+		
+		Utility.writeFile(Utility.getInstance().getFileWritePath(), message.toString());
+		
 		drawTheSupportor();
 	}
 
+	
+	private static StringBuilder regionFollower() {
+		
+		
+		// TODO Auto-generated method stub
+		StringBuilder message = new StringBuilder();
+		String region = System.console().readLine();
+		while(!PlayerInfoValidation.getInstance().validateLocation(region)) {
+			System.out.println("\n ====== Invalid Region Selected! select again ====== \n");
+			printRegion();
+			region = System.console().readLine();
+			
+		}
+		message.append(region).append(",");
+		
+		System.out.println("\nEnter the follower first color to add: [R/B/Y]");
+		String color = System.console().readLine();
+		
+		while(!PlayerInfoValidation.getInstance().validateFollower(color)) {
+			System.out.println("\n ====== Invalid Colour Selected! select again ====== \n");
+			printRegion();
+			color = System.console().readLine();
+			
+		}
+		
+		message.append(color);
+		return message;
+		
+	}
+
 	private static void manoeuvre() {
-		System.out.println("\nEnter the Region1 seperated by space with color 1 to swap");
+		
+		StringBuilder message = new StringBuilder("09:");
+		System.out.println("\nEnter the Region seperated by space with follower to swap");
+		printRegion();
+		
 		String part1 = System.console().readLine();
 		String[] data1 = part1.split(" ");
-		System.out.println("\nEnter the Region2 seperated by space with color 2 to swap");
+		while(!PlayerInfoValidation.getInstance().validateLocation(data1[0]) || !PlayerInfoValidation.getInstance().validateFollower(data1[1])) {
+			System.out.println("\n ====== Invalid Region Selected! select again ====== \n");
+			printRegion();
+			part1 = System.console().readLine();
+			data1 = part1.split(" ");
+			
+		}
+		message.append(data1[0]).append(",").append(data1[1]).append(",");
+		
+
+		System.out.println("\nEnter the Region seperated by space with follower to swap");
+		printRegion();
 		String part2 = System.console().readLine();
 		String[] data2 = part2.split(" ");
-		String message = "09:" + data1[0] + "," + data1[1] + "," + data2[0] + "," + data2[1];
-		Utility.writeFile(Utility.getInstance().getFileWritePath(), message);
+		while(!PlayerInfoValidation.getInstance().validateLocation(data2[0]) || !PlayerInfoValidation.getInstance().validateFollower(data2[1])) {
+			System.out.println("\n ====== Invalid Region Selected! select again ====== \n");
+			printRegion();
+			part2 = System.console().readLine();
+			data2 = part1.split(" ");
+			
+		}
+		message.append(data2[0]).append(",").append(data2[1]);
+		
+		
+		
+		Utility.writeFile(Utility.getInstance().getFileWritePath(), message.toString());
 		drawTheSupportor();
 	}
 
 	private static void outManoeuvre() {
-		System.out.println("\nEnter the Region1 seperated by space with 2 color to swap");
+		
+		StringBuilder message = new StringBuilder("10:");
+		System.out.println("\nEnter the Region1 seperated by space with Two Follower\n "
+				+ "Example (MO B Y) to swap");
+		printRegion();
+		
 		String part1 = System.console().readLine(); 
+		
 		String[] data1 = part1.split(" ");
-		System.out.println("\nEnter the Region2 seperated by space with color 1 to swap");
+		while(!PlayerInfoValidation.getInstance().validateLocation(data1[0]) || !PlayerInfoValidation.getInstance().validateFollower(data1[1]) || !PlayerInfoValidation.getInstance().validateFollower(data1[2])) {
+			System.out.println("\n ====== Invalid Region Selected! select again ====== \n");
+			printRegion();
+			part1 = System.console().readLine();
+			data1 = part1.split(" ");
+			
+		}
+		message.append(data1[0]).append(",").append(data1[1]).append(",");
+		
+		
+		System.out.println("\nEnter the Region2 seperated by space with follower to swap");
 		String part2 = System.console().readLine();
 		String[] data2 = part2.split(" ");
-		String message = "10:" + data1[0] + "," + data1[1] + "," + data1[2]+"," + data2[0] + "," + data2[1];
-		Utility.writeFile(Utility.getInstance().getFileWritePath(), message);
+		while(!PlayerInfoValidation.getInstance().validateLocation(data2[0]) || !PlayerInfoValidation.getInstance().validateFollower(data2[1])) {
+			System.out.println("\n ====== Invalid Region Selected! select again ====== \n");
+			printRegion();
+			part2 = System.console().readLine();
+			data2 = part1.split(" ");
+			
+		}
+		message.append(data2[0]).append(",").append(data2[1]);
+		
+		
+		
+		
+		
+		Utility.writeFile(Utility.getInstance().getFileWritePath(), message.toString());
 		drawTheSupportor();
 	}
 	
 	private static void negotiate() {
+		
+		StringBuilder message = new StringBuilder("11:");
+		
 		System.out.println("\n Negotiate: Enter country to swap from ");
+		System.out.println(GameParameter.getInstance().getInitializeloca());
 		String country1 = System.console().readLine();
+		
 		System.out.println("\nEnter country to swap with");
+		while(!PlayerInfoValidation.getInstance().validateLocation(country1)) {
+			System.out.println("\n ====== Invalid Region Selected! select again ====== \n");
+			printRegion();
+			country1 = System.console().readLine();
+			
+		}
+		message.append(country1).append(",");
+		
 		String country2 = System.console().readLine();
-		String message = "11:" + country1 + "," + country2;
-		Utility.writeFile(Utility.getInstance().getFileWritePath(), message);
+		
+		System.out.println("\nEnter country to swap with");
+		while(!PlayerInfoValidation.getInstance().validateLocation(country2)) {
+			System.out.println("\n ====== Invalid Region Selected! select again ====== \n");
+			printRegion();
+			country2 = System.console().readLine();
+			
+		}
+		message.append(country2);
+		
+		
+		Utility.writeFile(Utility.getInstance().getFileWritePath(), message.toString());
 		drawTheSupportor();
 	}
 	
@@ -230,15 +429,15 @@ public class PlayerProcessing {
 		
 		System.out.println("\n**Since you have played an action, draw a follower from any country to your court**");
 		System.out.println("Please Enter the country name :");
-		String part1 = System.console().readLine(); 
-		System.out.println("Please Enter the follower : (B/Y/R)");
-		String part2 = System.console().readLine(); 
-		String message = "12:" + part1 + "," + part2;
+		StringBuilder message = new StringBuilder("12").append(":");
+		message.append(regionFollower());
+		
 		System.out.println("\n");
-		Utility.writeFile(Utility.getInstance().getFileWritePath(), message);
+		Utility.writeFile(Utility.getInstance().getFileWritePath(), message.toString());
 	}
 
 	public static void winnerplayer(String messageNumber, List<String> messageDetailsList) {
+		
 		System.out.println("\n Player "+ messageDetailsList.get(0) + " is Winner !! ");
 		System.out.println("\nWinner type is "+messageDetailsList.get(1));
 		
@@ -256,25 +455,35 @@ public class PlayerProcessing {
 			
 			System.out.println(messageDetailsList.get(9) + " was drawn from " + messageDetailsList.get(8));
 			
+			
+			
 		}
 		if(messageDetailsList.get(1).equals("S")) {
 			System.out.println("Supporter Card was played");
 			System.out.println("Two supporter were added to " + messageDetailsList.get(2) + " Region of Country " + messageDetailsList.get(3));
+			
+			
 		}
 		if(messageDetailsList.get(1).equals("M")) {
 			System.out.println("Manoeuvre Card was played");
 			System.out.println(messageDetailsList.get(3) + " was added to " + messageDetailsList.get(2));
 			System.out.println(messageDetailsList.get(5) + " was added to " + messageDetailsList.get(4));
+			
+			
 		}
 		if(messageDetailsList.get(1).equals("0")) {
 			System.out.println("OutManoeuvre Card was played");
 			System.out.println(messageDetailsList.get(3) + " and "+ messageDetailsList.get(4) + " was added to " + messageDetailsList.get(2));
 			System.out.println(messageDetailsList.get(6) + " was added to " + messageDetailsList.get(5));
 			
+			
+			
 		}
 		if(messageDetailsList.get(1).equals("N")) {
 			System.out.println("Negotiate Card was played");
 			System.out.println("Country " + messageDetailsList.get(3) + " is now swapped with " + messageDetailsList.get(4));
+			
+			
 		
 		}
 		System.out.println("\n");
@@ -287,6 +496,8 @@ public class PlayerProcessing {
 		System.out.println("\n<<<<<<<<<<<Power Struggle was Processed>>>>>>>>>>");
 		System.out.println("Result of Power Struggle : ");
 		System.out.println(messageDetailsList.get(0) + " has been taken over by " + messageDetailsList.get(1)+"\n");
+		int index = GameParameter.getInstance().getInitializeloca().indexOf(messageDetailsList.get(0));
+		GameParameter.getInstance().getInitializeloca().remove(index);
 		
 	}
 	
