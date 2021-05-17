@@ -9,8 +9,8 @@ public class Main {
 		String playerName = args[0];
 		System.out.println("\nThis is a Player "+ playerName);
 		
-		String FilepathRead = "/tmp/allto" + playerName;
-		String Writepath = "/tmp/allfrom" + playerName;
+		String FilepathRead = "/tmp/To" + playerName;
+		String Writepath = "/tmp/From" + playerName;
 		
 		Utility.getInstance().SetPlayerName(playerName);
 		Utility.getInstance().setFileWritePath(Writepath);
