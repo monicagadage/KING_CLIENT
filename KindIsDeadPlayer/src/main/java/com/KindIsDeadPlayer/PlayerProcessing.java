@@ -18,7 +18,7 @@ public class PlayerProcessing {
 	 * @param messageDetailsList
 	 */
 	public static void populateMapRandomly(String messageNumber, List<String> messageDetailsList) {
-		System.out.println("Country		Blue	Red		Yellow");
+		System.out.println("\nCountry		Blue	Red		Yellow");
 		System.out.println(messageDetailsList.get(0) + "		" + messageDetailsList.get(1) + "	"
 				+ messageDetailsList.get(2) + "		" + messageDetailsList.get(3) + "");
 		System.out.println(messageDetailsList.get(4) + "		" + messageDetailsList.get(5) + "	"
@@ -35,6 +35,7 @@ public class PlayerProcessing {
 				+ messageDetailsList.get(26) + "		" + messageDetailsList.get(27) + "");
 		System.out.println(messageDetailsList.get(28) + "		" + messageDetailsList.get(29) + "	"
 				+ messageDetailsList.get(30) + "		" + messageDetailsList.get(31) + "");
+		System.out.println("\n");
 	}
 
 	/**
@@ -49,10 +50,7 @@ public class PlayerProcessing {
 	public static void distributeRandomFollowers(String messageNumber, List<String> messageDetailsList) {
 		System.out.println("Player " + messageDetailsList.get(0) + " has " + messageDetailsList.get(1) + " Blue "
 				+ messageDetailsList.get(2) + " Red " + messageDetailsList.get(3) + " Yellow Followers ");
-		System.out.println("Player " + messageDetailsList.get(4) + " has " + messageDetailsList.get(5) + " Blue "
-				+ messageDetailsList.get(6) + " Red " + messageDetailsList.get(7) + " Yellow Followers ");
-		System.out.println("Player " + messageDetailsList.get(8) + " has " + messageDetailsList.get(9) + " Blue "
-				+ messageDetailsList.get(10) + " Red " + messageDetailsList.get(11) + " Yellow Followers ");
+		
 
 	}
 
@@ -66,6 +64,7 @@ public class PlayerProcessing {
 	 * @param messageDetailsList
 	 */
 	public static void randomlyNameRegion(String messageNumber, List<String> messageDetailsList) {
+		System.out.println("\n");
 		System.out.println("Country  	Number");
 		System.out.println(messageDetailsList.get(0) + "  		" + 1);
 		System.out.println(messageDetailsList.get(1) + "  		" + 2);
@@ -80,20 +79,20 @@ public class PlayerProcessing {
 
 	public static void playerTurn(String messageNumber, List<String> messageDetailsList) {
 
-		System.out.println("Player " + messageDetailsList.get(0) + " is selected.");
+		System.out.println("\n***Player " + messageDetailsList.get(0) + " is selected***\n");
 		if (Utility.getInstance().GetPlayerName().equals(messageDetailsList.get(0))) {
 
-			System.out.println("Which card you wish to play ? ");
-			System.out.println("For card choose from below: ");
-			System.out.println("Supporter card : 1 ");
-			System.out.println("Assemble card : 2 ");
-			System.out.println("Manoeuvre card : 3 ");
-			System.out.println("OutManoeuvre card : 4 ");
-			System.out.println("Neigotiate card : 5 ");
-			System.out.println("Pass the turn  card : 6");
+			System.out.println("Which card you wish to play ? \n");
+			System.out.println("Choose one card from below: \n");
+			System.out.println("Supporter card      :---------------- 1 ");
+			System.out.println("Assemble card       :---------------- 2 ");
+			System.out.println("Manoeuvre card      :---------------- 3 ");
+			System.out.println("OutManoeuvre card   :---------------- 4 ");
+			System.out.println("Neigotiate card     :---------------- 5 ");
+			System.out.println("PASS                :---------------- 6");
 
 			String cardNum = System.console().readLine();
-
+			System.out.println("\n");
 			if ("1".equals(cardNum))
 				supporterCard();
 			else if ("2".equals(cardNum))
@@ -114,33 +113,73 @@ public class PlayerProcessing {
 	private static void supporterCard() {
 		System.out.println("Choose Scotish(S) Welish(W) English(E) Support Card");
 		String choice = System.console().readLine();
-		System.out.println("Enter Region to support    " + "Moray : MO\r\n" + "Strathclyde : ST\r\n"
-				+ "Lancaster: LA\r\n" + "Northumbria: NO\r\n" + "Warwick: WA\r\n" + "Gwynedd: GW\r\n" + "Essex: ES\r\n"
-				+ "Devon: DE\r\n" + "France: FR\r\n" + "");
+		System.out.println("\nEnter Region to support:   \n\n" + "Moray       :---------------- MO\r\n" 
+															 + "Strathclyde :---------------- ST\r\n"
+				                                             + "Lancaster   :---------------- LA\r\n" 
+															 + "Northumbria :---------------- NO\r\n" 
+				                                             + "Warwick     :---------------- WA\r\n" 
+															 + "Gwynedd     :---------------- GW\r\n" 
+				                                             + "Essex       :---------------- ES\r\n"
+				                                             + "Devon       :---------------- DE\r\n" 
+															 + "France      :---------------- FR\r" + "");
 		String region = System.console().readLine();
-		String message = "07:" + Utility.getInstance().GetPlayerName() + "," + choice + "," + region;
+		String message = "07:" + choice + "," + region;
 		Utility.writeFile(Utility.getInstance().getFileWritePath(), message);
 		drawTheSupportor();
 	}
 
 	private static void assembleCard() {
-		System.out.println("Enter First Region to support    " + "Moray : MO\r\n" + "Strathclyde : ST\r\n"
-				+ "Lancaster: LA\r\n" + "Northumbria: NO\r\n" + "Warwick: WA\r\n" + "Gwynedd: GW\r\n" + "Essex: ES\r\n"
-				+ "Devon: DE\r\n" + "France: FR\r\n" + "");
+		
+	//	System.out.println("Enter First Region to support    " + "Moray : MO\r\n" + "Strathclyde : ST\r\n"
+	//			+ "Lancaster: LA\r\n" + "Northumbria: NO\r\n" + "Warwick: WA\r\n" + "Gwynedd: GW\r\n" + "Essex: ES\r\n"
+	//			+ "Devon: DE\r\n" + "France: FR\r\n" + "");
+		
+		System.out.println("\nEnter First Region to support:    \n\n" + "Moray       :---------------- MO\r\n" 
+				 													+ "Strathclyde :---------------- ST\r\n"
+				 													+ "Lancaster   :---------------- LA\r\n" 
+				 													+ "Northumbria :---------------- NO\r\n" 
+				 													+ "Warwick     :---------------- WA\r\n" 
+				 													+ "Gwynedd     :---------------- GW\r\n" 
+				 													+ "Essex       :---------------- ES\r\n"
+				 													+ "Devon       :---------------- DE\r\n" 
+				 													+ "France      :---------------- FR\r" + "");
 		String region1 = System.console().readLine();
-		System.out.println("Enter the follower first color to add: [R/B/Y]");
+		System.out.println("\nEnter the follower first color to add: [R/B/Y]");
 		String color1 = System.console().readLine();
-		System.out.println("Enter Second Region to support    " + "Moray : MO\r\n" + "Strathclyde : ST\r\n"
-				+ "Lancaster: LA\r\n" + "Northumbria: NO\r\n" + "Warwick: WA\r\n" + "Gwynedd: GW\r\n" + "Essex: ES\r\n"
-				+ "Devon: DE\r\n" + "France: FR\r\n" + "");
+		
+	//	System.out.println("Enter Second Region to support    " + "Moray : MO\r\n" + "Strathclyde : ST\r\n"
+	//			+ "Lancaster: LA\r\n" + "Northumbria: NO\r\n" + "Warwick: WA\r\n" + "Gwynedd: GW\r\n" + "Essex: ES\r\n"
+	//			+ "Devon: DE\r\n" + "France: FR\r\n" + "");
+		System.out.println("\nEnter Second Region to support:   \n\n" + "Moray       :---------------- MO\r\n" 
+																	+ "Strathclyde :---------------- ST\r\n"
+																	+ "Lancaster   :---------------- LA\r\n" 
+																	+ "Northumbria :---------------- NO\r\n" 
+																	+ "Warwick     :---------------- WA\r\n" 
+																	+ "Gwynedd     :---------------- GW\r\n" 
+																	+ "Essex       :---------------- ES\r\n"
+																	+ "Devon       :---------------- DE\r\n" 
+																	+ "France      :---------------- FR\r" + "");
+			
 		String region2 = System.console().readLine();
-		System.out.println("Enter the follower second color to add: [R/B/Y]");
+		System.out.println("\nEnter the follower second color to add: [R/B/Y]");
 		String color2 = System.console().readLine();
-		System.out.println("Enter Third Region to support    " + "Moray : MO\r\n" + "Strathclyde : ST\r\n"
-				+ "Lancaster: LA\r\n" + "Northumbria: NO\r\n" + "Warwick: WA\r\n" + "Gwynedd: GW\r\n" + "Essex: ES\r\n"
-				+ "Devon: DE\r\n" + "France: FR\r\n" + "");
+		
+		
+	//	System.out.println("Enter Third Region to support    " + "Moray : MO\r\n" + "Strathclyde : ST\r\n"
+	//			+ "Lancaster: LA\r\n" + "Northumbria: NO\r\n" + "Warwick: WA\r\n" + "Gwynedd: GW\r\n" + "Essex: ES\r\n"
+	//			+ "Devon: DE\r\n" + "France: FR\r\n" + "");
+		System.out.println("\nEnter Third Region to support:   \n\n"  + "Moray       :---------------- MO\r\n" 
+																	+ "Strathclyde :---------------- ST\r\n"
+																	+ "Lancaster   :---------------- LA\r\n" 
+																	+ "Northumbria :---------------- NO\r\n" 
+																	+ "Warwick     :---------------- WA\r\n" 
+																	+ "Gwynedd     :---------------- GW\r\n" 
+																	+ "Essex       :---------------- ES\r\n"
+																	+ "Devon       :---------------- DE\r\n" 
+																	+ "France      :---------------- FR\r" + "");
+		
 		String region3 = System.console().readLine();
-		System.out.println("Enter the follower third color to add [R/B/Y]: ");
+		System.out.println("\nEnter the follower third color to add [R/B/Y]: ");
 		String color3 = System.console().readLine();
 		String message = "08:" + region1 + "," + color1 + "," + region2 + "," + color2 + "," + region3 + "," + color3;
 		Utility.writeFile(Utility.getInstance().getFileWritePath(), message);
@@ -148,10 +187,10 @@ public class PlayerProcessing {
 	}
 
 	private static void manoeuvre() {
-		System.out.println("Enter the Region1 seperated by space with color 1 to swap");
+		System.out.println("\nEnter the Region1 seperated by space with color 1 to swap");
 		String part1 = System.console().readLine();
 		String[] data1 = part1.split(" ");
-		System.out.println("Enter the Region2 seperated by space with color 2 to swap");
+		System.out.println("\nEnter the Region2 seperated by space with color 2 to swap");
 		String part2 = System.console().readLine();
 		String[] data2 = part2.split(" ");
 		String message = "09:" + data1[0] + "," + data1[1] + "," + data2[0] + "," + data2[1];
@@ -160,10 +199,10 @@ public class PlayerProcessing {
 	}
 
 	private static void outManoeuvre() {
-		System.out.println("Enter the Region1 seperated by space with 2 color to swap");
+		System.out.println("\nEnter the Region1 seperated by space with 2 color to swap");
 		String part1 = System.console().readLine(); 
 		String[] data1 = part1.split(" ");
-		System.out.println("Enter the Region2 seperated by space with color 1 to swap");
+		System.out.println("\nEnter the Region2 seperated by space with color 1 to swap");
 		String part2 = System.console().readLine();
 		String[] data2 = part2.split(" ");
 		String message = "10:" + data1[0] + "," + data1[1] + "," + data1[2]+"," + data2[0] + "," + data2[1];
@@ -172,9 +211,9 @@ public class PlayerProcessing {
 	}
 	
 	private static void negotiate() {
-		System.out.println(" Negotiate: Enter country to swap from ");
+		System.out.println("\n Negotiate: Enter country to swap from ");
 		String country1 = System.console().readLine();
-		System.out.println("Enter country to swap with");
+		System.out.println("\nEnter country to swap with");
 		String country2 = System.console().readLine();
 		String message = "11:" + country1 + "," + country2;
 		Utility.writeFile(Utility.getInstance().getFileWritePath(), message);
@@ -182,29 +221,33 @@ public class PlayerProcessing {
 	}
 	
 	private static void passTheTurn() {
-		System.out.println(" Trun passed to other player. ");
+		System.out.println("\n Trun passed to other player. ");
 		String message = "15:Pass";
 		Utility.writeFile(Utility.getInstance().getFileWritePath(), message);
 	}
 	
 	private static void drawTheSupportor(){
+		
+		System.out.println("\n**Since you have played an action, draw a follower from any country to your court**");
 		System.out.println("Please Enter the country name :");
 		String part1 = System.console().readLine(); 
 		System.out.println("Please Enter the follower : (B/Y/R)");
 		String part2 = System.console().readLine(); 
 		String message = "12:" + part1 + "," + part2;
+		System.out.println("\n");
 		Utility.writeFile(Utility.getInstance().getFileWritePath(), message);
 	}
 
 	public static void winnerplayer(String messageNumber, List<String> messageDetailsList) {
-		System.out.println(" Player "+ messageDetailsList.get(0) + " is Winner !! ");
-		System.out.println("Winner type is "+messageDetailsList.get(1));
+		System.out.println("\n Player "+ messageDetailsList.get(0) + " is Winner !! ");
+		System.out.println("\nWinner type is "+messageDetailsList.get(1));
 		
 	}
 
 	public static void allInfo(String messageNumber, List<String> messageDetailsList) {
 		// TODO Auto-generated method stub
-		System.out.println("It was" + messageDetailsList.get(0) + "Turn");
+		System.out.println("******Round Summary******");
+		System.out.println("\nIt was " + messageDetailsList.get(0) + " Turn");
 		if(messageDetailsList.get(1).equals("A")) {
 			System.out.println("Assemble Card was played");
 			System.out.println(messageDetailsList.get(3) + " was added to " + messageDetailsList.get(2));
@@ -234,16 +277,16 @@ public class PlayerProcessing {
 			System.out.println("Country " + messageDetailsList.get(3) + " is now swapped with " + messageDetailsList.get(4));
 		
 		}
-		
+		System.out.println("\n");
 		
 	}
 
 	public static void powerStruggle(String messageNumber, List<String> messageDetailsList) {
 		// TODO Auto-generated method stub
 		
-		System.out.println("Power Struggle was Processed");
+		System.out.println("\n<<<<<<<<<<<Power Struggle was Processed>>>>>>>>>>");
 		System.out.println("Result of Power Struggle : ");
-		System.out.println(messageDetailsList.get(0) + " has been taken over by " + messageDetailsList.get(1));
+		System.out.println(messageDetailsList.get(0) + " has been taken over by " + messageDetailsList.get(1)+"\n");
 		
 	}
 	

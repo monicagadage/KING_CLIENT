@@ -87,6 +87,7 @@ public class Utility {
 			PlayerProcessing.populateMapRandomly(messageNumber, messageDetailsList);
 		else if ("03".equals(messageNumber))
 			PlayerProcessing.distributeRandomFollowers(messageNumber, messageDetailsList);
+			
 		else if ("04".equals(messageNumber))
 			PlayerProcessing.randomlyNameRegion(messageNumber, messageDetailsList);
 		else if ("06".equals(messageNumber))
