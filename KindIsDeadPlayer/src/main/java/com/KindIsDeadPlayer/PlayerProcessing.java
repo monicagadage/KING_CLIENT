@@ -523,7 +523,7 @@ public class PlayerProcessing {
 				
 			
 		}
-		if(messageDetailsList.get(1).equals("0")) {
+		if(messageDetailsList.get(1).equals("O")) {
 			System.out.println("OutManoeuvre Card was played");
 			System.out.println(messageDetailsList.get(3) + " and "+ messageDetailsList.get(4) + " was added to " + messageDetailsList.get(2));
 			System.out.println(messageDetailsList.get(6) + " was added to " + messageDetailsList.get(5));
