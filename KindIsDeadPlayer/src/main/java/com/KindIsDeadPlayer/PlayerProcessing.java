@@ -600,22 +600,12 @@ public class PlayerProcessing {
 		HashMap<String, Integer> locationFollower = new HashMap<>();
 		
 		locationFollower = GameParameter.getInstance().getLocationFollower().get(location);
-		Boolean result = checkFollower(follower);
-		if (result) {
-			foll = locationFollower.get(follower) + 1;
+		foll = locationFollower.get(follower) + 1;
 			locationFollower.replace(follower, foll);
 			GameParameter.getInstance().getLocationFollower().replace(location, locationFollower);
-		}
+		
 	}
 
-	private static Boolean checkFollower(String follower) {
-		// TODO Auto-generated method stub
-		if(GameParameter.getInstance().getFollowerMap().get(follower) > 0) {
-			int count = GameParameter.getInstance().getFollowerMap().get(follower);
-			GameParameter.getInstance().getFollowerMap().replace(follower, count-1);
-			return true;
-		}
-	return false;	}
 
 	public static void powerStruggle(String messageNumber, List<String> messageDetailsList) {
 		// TODO Auto-generated method stub
