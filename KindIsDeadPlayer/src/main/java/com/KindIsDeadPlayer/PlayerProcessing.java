@@ -559,8 +559,8 @@ public class PlayerProcessing {
 			GameParameter.getInstance().getInitializeloca().set(index2, messageDetailsList.get(2));
 			GameParameter.getInstance().getInitializeloca().set(index, messageDetailsList.get(3));
 			
-			System.out.println(messageDetailsList.get(4) + " was drawn from " + messageDetailsList.get(3));
-			updateLoca(messageDetailsList.get(3), messageDetailsList.get(4));
+			System.out.println(messageDetailsList.get(5) + " was drawn from " + messageDetailsList.get(4));
+			updateLoca(messageDetailsList.get(4), messageDetailsList.get(5));
 		
 		}
 		System.out.println("\n");
