@@ -362,7 +362,7 @@ public class PlayerProcessing {
 			data1 = part1.split(" ");
 			
 		}
-		message.append(data1[0]).append(",").append(data1[1]).append(",");
+		message.append(data1[0]).append(",").append(data1[1]).append(",").append(data1[2]).append(",");
 		
 		
 		System.out.println("\nEnter the Region2 seperated by space with follower to swap");
