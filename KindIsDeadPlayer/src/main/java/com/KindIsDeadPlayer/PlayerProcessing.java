@@ -107,8 +107,7 @@ public class PlayerProcessing {
 	/**
 	 * Randomly number your 8 regions (for power struggle resolution order)
 	 * Purpose: Assign the country randomly for each number Initiated by: Server
-	 * Data: Country Cards Message: 04: < Country 1 > , <Country 2 >, <Country 3
-	 * > …… <Country 8> Eg: 04: MO,NO...ES
+	 * Data: Country Cards Message: 04: < Country 1 > , <Country 2 >, <Country 3 > <Country 8> Eg: 04: MO,NO...ES
 	 * 
 	 * @param messageNumber
 	 * @param messageDetailsList
@@ -216,21 +215,21 @@ public class PlayerProcessing {
 		
 		// TODO Auto-generated method stub
 		System.out.println("\nEnter Region:   \n\n" 
-				 + "Moray       :---------------- MO\r" 
+				 + "Moray       :---------------- MO " 
 				 + displayFoll("MO")
-				 + "Strathclyde :---------------- ST\r"
+				 + "Strathclyde :---------------- ST "
 				 + displayFoll("ST")
-				 + "Lancaster   :---------------- LA\r" 
+				 + "Lancaster   :---------------- LA " 
 				 + displayFoll("LA")
-				 + "Northumbria :---------------- NO\r" 
+				 + "Northumbria :---------------- NO " 
 				 + displayFoll("NO")
-				 + "Warwick     :---------------- WA\r" 
+				 + "Warwick     :---------------- WA " 
 				 + displayFoll("WA")
-				 + "Gwynedd     :---------------- GW\r" 
+				 + "Gwynedd     :---------------- GW " 
 				 + displayFoll("GW")
-				 + "Essex       :---------------- ES\r"
+				 + "Essex       :---------------- ES "
 				 + displayFoll("ES")
-				 + "Devon       :---------------- DE\r" 
+				 + "Devon       :---------------- DE " 
 				 + displayFoll("DE") );
 		
 		
@@ -312,7 +311,7 @@ public class PlayerProcessing {
 	private static void manoeuvre() {
 		
 		StringBuilder message = new StringBuilder("09:");
-		System.out.println("\nEnter the Region seperated by space with follower to swap");
+		System.out.println("\nEnter the Region seperated by space with follower to swap e");
 		printRegion();
 		
 		String part1 = System.console().readLine();
@@ -481,7 +480,7 @@ public class PlayerProcessing {
 		}
 		if(messageDetailsList.get(1).equals("N")) {
 			System.out.println("Negotiate Card was played");
-			System.out.println("Country " + messageDetailsList.get(3) + " is now swapped with " + messageDetailsList.get(4));
+			System.out.println("Country " + messageDetailsList.get(2) + " is now swapped with " + messageDetailsList.get(3));
 			
 			
 		
