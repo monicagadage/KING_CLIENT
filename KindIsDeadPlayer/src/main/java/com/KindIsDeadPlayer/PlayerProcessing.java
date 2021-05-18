@@ -311,12 +311,13 @@ public class PlayerProcessing {
 	private static void manoeuvre() {
 		
 		StringBuilder message = new StringBuilder("09:");
-		System.out.println("\nEnter the Region seperated by space with follower to swap e");
+		System.out.println("\nEnter the Region seperated by space with follower to swap\n"
+				+ " Example (MO B): e");
 		printRegion();
 		
 		String part1 = System.console().readLine();
 		String[] data1 = part1.split(" ");
-		while(!PlayerInfoValidation.getInstance().validateLocation(data1[0]) || !PlayerInfoValidation.getInstance().validateFollower(data1[1])) {
+		while(data1.length < 2 || !PlayerInfoValidation.getInstance().validateLocation(data1[0]) || !PlayerInfoValidation.getInstance().validateFollower(data1[1])) {
 			System.out.println("\n ====== Invalid Region Selected! select again ====== \n");
 			printRegion();
 			part1 = System.console().readLine();
@@ -326,11 +327,12 @@ public class PlayerProcessing {
 		message.append(data1[0]).append(",").append(data1[1]).append(",");
 		
 
-		System.out.println("\nEnter the Region seperated by space with follower to swap");
+		System.out.println("\nEnter the Region seperated by space with follower to swap\n"
+				+ "Example (MO B):");
 		printRegion();
 		String part2 = System.console().readLine();
 		String[] data2 = part2.split(" ");
-		while(!PlayerInfoValidation.getInstance().validateLocation(data2[0]) || !PlayerInfoValidation.getInstance().validateFollower(data2[1])) {
+		while(data2.length < 2 || !PlayerInfoValidation.getInstance().validateLocation(data2[0]) || !PlayerInfoValidation.getInstance().validateFollower(data2[1])) {
 			System.out.println("\n ====== Invalid Region Selected! select again ====== \n");
 			printRegion();
 			part2 = System.console().readLine();
@@ -355,7 +357,7 @@ public class PlayerProcessing {
 		String part1 = System.console().readLine(); 
 		
 		String[] data1 = part1.split(" ");
-		while(!PlayerInfoValidation.getInstance().validateLocation(data1[0]) || !PlayerInfoValidation.getInstance().validateFollower(data1[1]) || !PlayerInfoValidation.getInstance().validateFollower(data1[2])) {
+		while(data1.length < 3 ||!PlayerInfoValidation.getInstance().validateLocation(data1[0]) || !PlayerInfoValidation.getInstance().validateFollower(data1[1]) || !PlayerInfoValidation.getInstance().validateFollower(data1[2])) {
 			System.out.println("\n ====== Invalid Region Selected! select again ====== \n");
 			printRegion();
 			part1 = System.console().readLine();
@@ -365,10 +367,11 @@ public class PlayerProcessing {
 		message.append(data1[0]).append(",").append(data1[1]).append(",").append(data1[2]).append(",");
 		
 		
-		System.out.println("\nEnter the Region2 seperated by space with follower to swap");
+		System.out.println("\nEnter the Region2 seperated by space with follower to swap\n"
+				+ "Example (MO B):");
 		String part2 = System.console().readLine();
 		String[] data2 = part2.split(" ");
-		while(!PlayerInfoValidation.getInstance().validateLocation(data2[0]) || !PlayerInfoValidation.getInstance().validateFollower(data2[1])) {
+		while(data2.length < 2 || !PlayerInfoValidation.getInstance().validateLocation(data2[0]) || !PlayerInfoValidation.getInstance().validateFollower(data2[1])) {
 			System.out.println("\n ====== Invalid Region Selected! select again ====== \n");
 			printRegion();
 			part2 = System.console().readLine();
@@ -391,9 +394,9 @@ public class PlayerProcessing {
 		
 		System.out.println("\n Negotiate: Enter country to swap from ");
 		System.out.println(GameParameter.getInstance().getInitializeloca());
+		
 		String country1 = System.console().readLine();
 		
-		System.out.println("\nEnter country to swap with");
 		while(!PlayerInfoValidation.getInstance().validateLocation(country1)) {
 			System.out.println("\n ====== Invalid Region Selected! select again ====== \n");
 			printRegion();
@@ -429,7 +432,11 @@ public class PlayerProcessing {
 		System.out.println("\n**Since you have played an action, draw a follower from any country to your court**");
 		System.out.println("Please Enter the country name :");
 		StringBuilder message = new StringBuilder("12").append(":");
+		
+		printRegion();
+		
 		message.append(regionFollower());
+		
 		
 		System.out.println("\n");
 		Utility.writeFile(Utility.getInstance().getFileWritePath(), message.toString());
