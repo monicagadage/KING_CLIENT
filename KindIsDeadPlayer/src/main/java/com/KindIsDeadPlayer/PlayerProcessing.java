@@ -1,8 +1,13 @@
 package com.KindIsDeadPlayer;
 
 import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
+
+
+
+
 
 
 //import Utility;
@@ -456,18 +461,41 @@ public class PlayerProcessing {
 		if(messageDetailsList.get(1).equals("A")) {
 			System.out.println("Assemble Card was played");
 			System.out.println(messageDetailsList.get(3) + " was added to " + messageDetailsList.get(2));
+			updateCard(messageDetailsList.get(2), messageDetailsList.get(3));
 			System.out.println(messageDetailsList.get(5) + " was added to " + messageDetailsList.get(4));
+			updateCard(messageDetailsList.get(4), messageDetailsList.get(6));
 			System.out.println(messageDetailsList.get(7) + " was added to " + messageDetailsList.get(6));
+			updateCard(messageDetailsList.get(6), messageDetailsList.get(7));
 			
 			System.out.println(messageDetailsList.get(9) + " was drawn from " + messageDetailsList.get(8));
-			
+			updateLoca(messageDetailsList.get(8), messageDetailsList.get(9));
 			
 			
 		}
 		if(messageDetailsList.get(1).equals("S")) {
 			System.out.println("Supporter Card was played");
-			System.out.println("Two supporter were added to " + messageDetailsList.get(2) + " Region of Country " + messageDetailsList.get(3));
+			System.out.println("Two supporter were added to Region of Country " + messageDetailsList.get(2));
+			if (messageDetailsList.get(2).equals("S")) {
+				
+				//add the condition for handling if there is only one follower left
+				
+				addSupporter("B", messageDetailsList.get(3));
+				
+			}
 			
+			if (messageDetailsList.get(2).equals("W")) {
+				
+				addSupporter("R", messageDetailsList.get(3));
+			}
+			
+			if (messageDetailsList.get(2).equals("E")) {
+				
+				addSupporter("Y", messageDetailsList.get(3));
+				
+			}
+			
+			System.out.println(messageDetailsList.get(3) + " was drawn from " + messageDetailsList.get(4));
+			updateLoca(messageDetailsList.get(3), messageDetailsList.get(4));
 			
 		}
 		if(messageDetailsList.get(1).equals("M")) {
@@ -475,26 +503,119 @@ public class PlayerProcessing {
 			System.out.println(messageDetailsList.get(3) + " was added to " + messageDetailsList.get(2));
 			System.out.println(messageDetailsList.get(5) + " was added to " + messageDetailsList.get(4));
 			
+			String region_one = messageDetailsList.get(2);
+			String follower_one = messageDetailsList.get(3);
+			String region_two = messageDetailsList.get(4);
+			String follower_two = messageDetailsList.get(5);
+			
+			int count_one = GameParameter.getInstance().getLocationFollower().get(region_one).get(follower_one);
+			int count_two = GameParameter.getInstance().getLocationFollower().get(region_two).get(follower_two);
+			
+
+				
+				swapfollower(follower_one , region_one , region_one , count_one);
+				
+				swapfollower(follower_two , region_two , region_one ,  count_two);
+				
+		
+				System.out.println(messageDetailsList.get(3) + " was drawn from " + messageDetailsList.get(4));
+				updateLoca(messageDetailsList.get(6), messageDetailsList.get(7));
+				
 			
 		}
 		if(messageDetailsList.get(1).equals("0")) {
 			System.out.println("OutManoeuvre Card was played");
 			System.out.println(messageDetailsList.get(3) + " and "+ messageDetailsList.get(4) + " was added to " + messageDetailsList.get(2));
 			System.out.println(messageDetailsList.get(6) + " was added to " + messageDetailsList.get(5));
+			String region_one = messageDetailsList.get(2);
+			String follower_one = messageDetailsList.get(3);
+			String follower_one1 = messageDetailsList.get(4);
+			String region_two = messageDetailsList.get(5);
+			String follower_two = messageDetailsList.get(6);
 			
+			int count_one = GameParameter.getInstance().getLocationFollower().get(region_one).get(follower_one);
+			int count_one1 = GameParameter.getInstance().getLocationFollower().get(region_one).get(follower_one1);
+			int count_two = GameParameter.getInstance().getLocationFollower().get(region_two).get(follower_two);
+			
+				swapfollower(follower_one , region_one , region_two ,  count_one);
+
+				swapfollower(follower_one1 , region_one , region_two ,  count_one1);
+				
+				swapfollower(follower_two , region_two , region_one ,  count_two);
+				
+				
+				System.out.println(messageDetailsList.get(8) + " was drawn from " + messageDetailsList.get(7));
+				updateLoca(messageDetailsList.get(7), messageDetailsList.get(8));
 			
 			
 		}
 		if(messageDetailsList.get(1).equals("N")) {
 			System.out.println("Negotiate Card was played");
 			System.out.println("Country " + messageDetailsList.get(2) + " is now swapped with " + messageDetailsList.get(3));
+			int index = GameParameter.getInstance().getInitializeloca().indexOf(messageDetailsList.get(2));
+			int index2 = GameParameter.getInstance().getInitializeloca().indexOf(messageDetailsList.get(3));
 			
+			//swapping variable is needed
+			GameParameter.getInstance().getInitializeloca().set(index2, messageDetailsList.get(2));
+			GameParameter.getInstance().getInitializeloca().set(index, messageDetailsList.get(3));
 			
+			System.out.println(messageDetailsList.get(4) + " was drawn from " + messageDetailsList.get(3));
+			updateLoca(messageDetailsList.get(3), messageDetailsList.get(4));
 		
 		}
 		System.out.println("\n");
 		
 	}
+	
+	
+	private static void updateLoca(String location, String follower) {
+		// TODO Auto-generated method stub
+		int locFollower = GameParameter.getInstance().getLocationFollower().get(location).get(follower);
+		GameParameter.getInstance().getLocationFollower().get(location).replace(follower, locFollower - 1);
+		
+		
+	}
+
+	private static void addSupporter( String follower, String region) {
+		// TODO Auto-generated method stub
+		HashMap<String, Integer> locationFollower = GameParameter.getInstance().getLocationFollower().get(region);
+		int locationFoll = locationFollower.get(follower); 
+		locationFollower.replace(follower , locationFoll+2);
+		GameParameter.getInstance().getLocationFollower().replace(region, locationFollower);
+	}
+
+	private static void swapfollower(String follower, String region_sub, String region_add, int count) {
+		// TODO Auto-generated method stub
+		if (count >= 1) {
+			GameParameter.getInstance().getLocationFollower().get(region_sub).replace(follower, count - 1 );
+			int tmp = GameParameter.getInstance().getLocationFollower().get(region_add).get(follower);
+			GameParameter.getInstance().getLocationFollower().get(region_add).replace(follower, tmp+1);
+		}
+		
+	}
+
+	private static void updateCard(String location, String follower) {
+		// TODO Auto-generated method stub
+		int foll;
+		HashMap<String, Integer> locationFollower = new HashMap<>();
+		
+		locationFollower = GameParameter.getInstance().getLocationFollower().get(location);
+		Boolean result = checkFollower(follower);
+		if (result) {
+			foll = locationFollower.get(follower) + 1;
+			locationFollower.replace(follower, foll);
+			GameParameter.getInstance().getLocationFollower().replace(location, locationFollower);
+		}
+	}
+
+	private static Boolean checkFollower(String follower) {
+		// TODO Auto-generated method stub
+		if(GameParameter.getInstance().getFollowerMap().get(follower) > 0) {
+			int count = GameParameter.getInstance().getFollowerMap().get(follower);
+			GameParameter.getInstance().getFollowerMap().replace(follower, count-1);
+			return true;
+		}
+	return false;	}
 
 	public static void powerStruggle(String messageNumber, List<String> messageDetailsList) {
 		// TODO Auto-generated method stub
