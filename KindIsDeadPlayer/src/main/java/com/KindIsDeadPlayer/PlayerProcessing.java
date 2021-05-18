@@ -463,7 +463,7 @@ public class PlayerProcessing {
 			System.out.println(messageDetailsList.get(3) + " was added to " + messageDetailsList.get(2));
 			updateCard(messageDetailsList.get(2), messageDetailsList.get(3));
 			System.out.println(messageDetailsList.get(5) + " was added to " + messageDetailsList.get(4));
-			updateCard(messageDetailsList.get(4), messageDetailsList.get(6));
+			updateCard(messageDetailsList.get(4), messageDetailsList.get(5));
 			System.out.println(messageDetailsList.get(7) + " was added to " + messageDetailsList.get(6));
 			updateCard(messageDetailsList.get(6), messageDetailsList.get(7));
 			
@@ -474,7 +474,7 @@ public class PlayerProcessing {
 		}
 		if(messageDetailsList.get(1).equals("S")) {
 			System.out.println("Supporter Card was played");
-			System.out.println("Two supporter were added to Region of Country " + messageDetailsList.get(2));
+			System.out.println("Two supporter were added to Region of Country " + messageDetailsList.get(3));
 			if (messageDetailsList.get(2).equals("S")) {
 				
 				//add the condition for handling if there is only one follower left
@@ -494,8 +494,8 @@ public class PlayerProcessing {
 				
 			}
 			
-			System.out.println(messageDetailsList.get(3) + " was drawn from " + messageDetailsList.get(4));
-			updateLoca(messageDetailsList.get(3), messageDetailsList.get(4));
+			System.out.println(messageDetailsList.get(5) + " was drawn from " + messageDetailsList.get(4));
+			updateLoca(messageDetailsList.get(4), messageDetailsList.get(5));
 			
 		}
 		if(messageDetailsList.get(1).equals("M")) {
@@ -518,7 +518,7 @@ public class PlayerProcessing {
 				swapfollower(follower_two , region_two , region_one ,  count_two);
 				
 		
-				System.out.println(messageDetailsList.get(3) + " was drawn from " + messageDetailsList.get(4));
+				System.out.println(messageDetailsList.get(7) + " was drawn from " + messageDetailsList.get(6));
 				updateLoca(messageDetailsList.get(6), messageDetailsList.get(7));
 				
 			
