@@ -14,7 +14,7 @@ find src -type f -name "*.java" -print | xargs javac
 
 ```
 cd /src/main/java
-java com.KindIsDeadPlayer.Main P1/P2/P3
+java com.KindIsDeadPlayer.Main <P1/P2/P3> <team name eg.all>
 ```
 ##Add player number while running the java command
 
